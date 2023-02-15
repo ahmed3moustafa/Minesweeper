@@ -1,6 +1,6 @@
 <launch>
 <node name="teleop" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py">
-<param name="key_timeout" type="float" value="0.01"/>
+<param name="key_timeout" type="double" value="0.01"/>
 </node>
 <node name="control" pkg="minesweeper" type="mover.py" />
 <node name="ros_serial" pkg="rosserial_arduino" type="serial_node.py">
