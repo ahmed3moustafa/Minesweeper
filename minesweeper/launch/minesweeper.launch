@@ -1,12 +1,12 @@
 <launch>
-<node name="teleop" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py">
+<node name="teleop_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py">
 <param name="key_timeout" type="double" value="0.01"/>
 </node>
-<node name="control" pkg="minesweeper" type="mover.py" />
+<node name="motor_conroller" pkg="minesweeper" type="mover.py" />
 <node name="ros_serial" pkg="rosserial_arduino" type="serial_node.py">
 <param name="port" type="string" value="/dev/ttyACM0"/>
 <param name="baud" type="int" value="57600"/>
 </node>
-<node name="mine_pos" pkg="minesweeper" type="pose_mine.py" />
-<node name="localization" pkg="minesweeper" type="metal_map.py" />
+<node name="mine_position" pkg="minesweeper" type="pose_mine.py" />
+<node name="map" pkg="minesweeper" type="metal_map.py" />
 </launch>
