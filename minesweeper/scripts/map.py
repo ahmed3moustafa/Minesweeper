@@ -65,7 +65,7 @@ if __name__ == '__main__':
         im.set_data(data)
     ani = FuncAnimation(fig, update)
     rospy.init_node("plotter")
-    rospy.Subscriber("navigation", Pose2D, mapper)
+    rospy.Subscriber("mine_found", Pose2D, mapper)
     plt.show()
                     
 

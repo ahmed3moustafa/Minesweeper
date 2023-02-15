@@ -67,7 +67,6 @@ class minesweeper_bot:
         #metaldetector
         rospy.Subscriber("/metal_detector",Int16, self.metal_detector_callback)
         self.mine_found_pub=rospy.Publisher('/mine_found', Pose2D,queue_size=10)
-        self.buried_mine_pub=rospy.Publisher('/buried_mine', Pose2D,queue_size=10)
         rospy.spin()
        
 
@@ -119,11 +118,12 @@ class minesweeper_bot:
     def metal_detector_callback(self,metal_detector_data_msg):
         self.metal_detector_data = metal_detector_data_msg.data
         if self.metal_detector_data == 1:
-            self.mine_found_pub.publish(self.minsweeper_current)
+            self.minsweeper_current.theta = 1
             print("mine_found")
         if self.metal_detector_data == 2:
-            self.buried_mine_pub.publish(self.minsweeper_current)
+            self.minsweeper_current.theta = 2
             print("burried_mine_found")
+        self.mine_found_pub.publish(self.minsweeper_current)
 
  
 
@@ -152,8 +152,8 @@ class minesweeper_bot:
                 self.prev_err = (self.rho-self.prev_err)*delta_t
                 turtle_speed.linear.x = self.kp*self.rho +  self.acc_err*self.ki + self.prev_err * self.kd 
                 turtle_speed.angular.z = (self.kp_alpha * alpha)
-                self.velocity_pub.publish(turtle_speed)
-                self.current_pose.publish(self.minsweeper_current)
+                # self.velocity_pub.publish(turtle_speed)
+                # self.current_pose.publish(self.minsweeper_current)
                 rospy.sleep(0.01)
             print("Reach position")
             print("position x: ", self.minsweeper_pose_x, "position y: ", self.minsweeper_pose_y, "position theta: ", self.minsweeper_pose_theta)

@@ -8,5 +8,8 @@
 <param name="baud" type="int" value="57600"/>
 </node>
 <node name="mine_position" pkg="minesweeper" type="pose_mine.py" />
+<!--
 <node name="map" pkg="minesweeper" type="metal_map.py" />
+-->
+<node name="map" pkg = "minesweeper" type="map.py" />
 </launch>

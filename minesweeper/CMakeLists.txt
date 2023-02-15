@@ -164,7 +164,7 @@ include_directories(
 catkin_install_python(PROGRAMS
   scripts/mover.py
   scripts/pose_mine.py
-  scripts/metal_map.py
+  scripts/map.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
